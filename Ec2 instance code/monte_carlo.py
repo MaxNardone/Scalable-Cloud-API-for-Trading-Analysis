@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-
-#Code inspired by Professor's Gillam Lee in Lab 5 of Cloud Computing module
-#COMM034, University of Surrey
 import cgi
 import cgitb
 import json
