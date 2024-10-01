@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Risk Chart</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Signal', '95% VaR', '99% VaR', 'Avg 95% VaR', 'Avg 99% VaR'],
+          {% for i in range(chart_data|length - 1) %}
+          [{{ chart_data[i+1][0] }}, {{ chart_data[i+1][1] }}, {{ chart_data[i+1][2] }}, {{ avg_95 }}, {{ avg_99 }}],
+          {% endfor %}
+        ]);
+
+        var options = {
+          title: 'Risk Values',
+          vAxis: { title: 'VaR' },
+          hAxis: { title: 'Signals' },
+          seriesType: 'bars',
+          series: {
+            0: { color: 'yellow' },  // 95% VaR bars
+            1: { color: 'red' },     // 99% VaR bars
+            2: { type: 'line', color: 'blue' },   // Avg 95% VaR line
+            3: { type: 'line', color: 'purple' }  // Avg 99% VaR line
+          },
+          legend: { position: 'bottom' },
+          tooltip: { isHtml: true },
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Risk Chart</h1>
+    <div id="chart_div" style="width: 900px; height: 500px"></div>
+    <p>Average 95% VaR: {{ avg_95 }}</p>
+    <p>Average 99% VaR: {{ avg_99 }}</p>
+  </body>
+</html>
