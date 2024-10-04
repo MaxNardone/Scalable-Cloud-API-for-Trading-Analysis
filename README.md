@@ -1,5 +1,5 @@
 # Scalable-Cloud-API-for-Trading-Analysis
-Cloud-Native API for Scalable Trading Strategy Risk and Profitability Analysis: A Multi-Cloud Approach with GAE and AWS Integration.
+Cloud-Native Flask API for Scalable Trading Strategy Risk and Profitability Analysis, using AWS Lambda, EC2 and GAE (Google App Engine) for risk and profitability analysis of trading strategies and implementing Monte Carlo simulations for risk assessment and integrated financial signal identification with Python.
 
 ## Project Overview
 This project focuses on developing a cloud-native API that leverages multiple cloud services to assess the risk and profitability of various trading strategies. The API integrates trading signals and Monte Carlo methods to offer insights into risk assessments and profitability metrics.
